@@ -18,17 +18,24 @@ class Scheduler:
     def __init__(self):
         self.queue = []
         
-    def addPatient(self):
-        pass
-    
+    def addPatient(self,patient):
+        heapq.heappush(self.patients_queue, (-patient.priority, patient))
+        
     def retrieveNextPatient(self):
-        pass
+        if self.patients_queue:
+            return heapq.heappop(self.patients_queue)[1]
+        else:
+            return None
     
     def printWaitingList(self):
-        pass
-    
-    def savePatientToFile(self):
-        pass
+        for priority, patient in sorted(self.patients_queue, reverse=True):
+                    print(patient)
+                            
+    def savePatientToFile(self, patient, status):
+        with open('patients.txt','a') as file:
+            file.write(f'Patient: {patient} >> Status: {status}\n')
     
     def readConsultFile(self):
-        pass
+        with open('patients.txt','r') as file:
+            for line in file:
+                print()
