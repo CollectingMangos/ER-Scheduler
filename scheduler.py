@@ -30,7 +30,6 @@ class Scheduler:
     def savePatientToFile(self, patient):
         with open("patients.txt","a") as file:
             file.write(f"{patient.patientInfo()}\n")
-        print("This patient has been saved to the file")
     
     def readConsultFile(self):
         with open("patients.txt","r") as file:
