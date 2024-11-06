@@ -1,5 +1,7 @@
 # ER Visit Scheduler
 
+This app is for Question 1 of ITDPA2-44 (Data Structures & Algorithms in Python) Project.
+
 This Python application provides a basic patient management system that prioritizes patients in a queue based on their urgency level. It includes functionality for adding, retrieving, and saving patient records with priority levels, along with reading saved records from a file.
 
 ## Project Structure
