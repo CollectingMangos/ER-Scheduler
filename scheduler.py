@@ -16,6 +16,28 @@ class Patient:
 
 class Scheduler:
     def __init__(self):
+        self.queue = PriorityQueue()
+        
+    def addPatient(self,patient):
+        self.queue.addPatient(patient)
+        
+    def retrieveNextPatient(self):
+        return self.queue.retrieveNextPatient()
+    
+    def printWaitingList(self):
+        self.queue.printWaitingList()
+                            
+    def savePatientToFile(self, patient, status):
+        with open('patients.txt','a') as file:
+            file.write(f'Patient: {patient} >> Status: {status}\n')
+    
+    def readConsultFile(self):
+        with open('patients.txt','r') as file:
+            for line in file:
+                print()
+                
+class PriorityQueue:
+    def __init__(self):
         self.queue = []
         
     def addPatient(self,patient):
@@ -30,12 +52,3 @@ class Scheduler:
     def printWaitingList(self):
         for priority, patient in sorted(self.patients_queue, reverse=True):
                     print(patient)
-                            
-    def savePatientToFile(self, patient, status):
-        with open('patients.txt','a') as file:
-            file.write(f'Patient: {patient} >> Status: {status}\n')
-    
-    def readConsultFile(self):
-        with open('patients.txt','r') as file:
-            for line in file:
-                print()
